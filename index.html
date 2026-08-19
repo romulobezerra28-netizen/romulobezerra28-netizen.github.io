@@ -455,50 +455,208 @@
          CONFIRMAÇÃO
     ========================== -->
 
-    <section class="section confirmation">
+   <section class="section confirmation">
 
-      <div class="section-title reveal">
+  <div class="section-title reveal">
 
-        <p class="eyebrow">
-          SUA PRESENÇA
-        </p>
+    <p class="eyebrow">
+      SUA PRESENÇA
+    </p>
 
-        <h2>
-          Será uma alegria ter você conosco.
-        </h2>
+    <h2>
+      Será uma alegria ter você conosco.
+    </h2>
 
-        <div class="ornament">❦</div>
+    <div class="ornament">❦</div>
+
+  </div>
+
+
+  <div class="confirmation-content reveal">
+
+    <p class="confirmation-intro">
+      Como estamos preparando uma celebração íntima,
+      pedimos que confirme sua presença até
+      <strong>02 de setembro de 2026</strong>.
+    </p>
+
+
+    <form
+      class="rsvp-form"
+      id="rsvpForm">
+
+
+      <div class="form-group">
+
+        <label for="guestName">
+          Seu nome completo
+        </label>
+
+        <input
+          type="text"
+          id="guestName"
+          name="guestName"
+          placeholder="Digite seu nome"
+          required>
 
       </div>
 
 
-      <div class="confirmation-content reveal">
+      <div class="form-group">
 
-        <p>
-
-          Como estamos preparando uma celebração íntima,
-          pedimos que cada família confirme sua presença
-          até <strong>02 de setembro de 2026</strong>.
-
+        <p class="form-label">
+          Você confirma sua presença?
         </p>
 
-        <a
-          href="#"
-          class="btn btn-dark"
-          id="rsvpButton">
 
-          CONFIRMAR PRESENÇA
+        <label class="choice">
 
-        </a>
+          <input
+            type="radio"
+            name="attendance"
+            value="sim"
+            required>
 
-        <p class="small-note">
-          O formulário será conectado ao Google Forms.
-        </p>
+          <span>
+            Sim, estarei presente ❤️
+          </span>
+
+        </label>
+
+
+        <label class="choice">
+
+          <input
+            type="radio"
+            name="attendance"
+            value="nao">
+
+          <span>
+            Infelizmente, não poderei comparecer
+          </span>
+
+        </label>
 
       </div>
 
-    </section>
 
+      <div
+        class="form-group"
+        id="companionGroup"
+        hidden>
+
+        <p class="form-label">
+          Como será sua presença?
+        </p>
+
+
+        <label class="choice">
+
+          <input
+            type="radio"
+            name="companion"
+            value="somente-eu">
+
+          <span>
+            Somente eu
+          </span>
+
+        </label>
+
+
+        <label class="choice">
+
+          <input
+            type="radio"
+            name="companion"
+            value="acompanhante">
+
+          <span>
+            Eu + 1 acompanhante
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <div
+        class="form-group"
+        id="companionNameGroup"
+        hidden>
+
+        <label for="companionName">
+          Nome do seu acompanhante
+        </label>
+
+        <input
+          type="text"
+          id="companionName"
+          name="companionName"
+          placeholder="Digite o nome">
+
+      </div>
+
+
+      <div
+        class="form-group"
+        id="messageGroup">
+
+        <label for="guestMessage">
+          Gostaria de deixar uma mensagem para nós?
+          <span>(opcional)</span>
+        </label>
+
+        <textarea
+          id="guestMessage"
+          name="guestMessage"
+          rows="4"
+          placeholder="Escreva uma mensagem especial..."></textarea>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-dark">
+
+        ENVIAR CONFIRMAÇÃO
+
+      </button>
+
+
+      <p class="small-note">
+        Sua resposta será usada apenas para a organização
+        da nossa celebração.
+      </p>
+
+    </form>
+
+
+    <div
+      class="rsvp-success"
+      id="rsvpSuccess"
+      hidden>
+
+      <div class="success-flower">
+        ❦
+      </div>
+
+      <h3>
+        Obrigado! ❤️
+      </h3>
+
+      <p>
+        Sua resposta foi registrada.
+        Será uma alegria compartilhar esse momento
+        tão especial com você.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
     <!-- =========================
          PRESENTES
