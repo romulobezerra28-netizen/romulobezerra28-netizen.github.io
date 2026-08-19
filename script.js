@@ -99,6 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // MÚSICA
   // =========================
 
+    // =========================
+  // MÚSICA
+  // =========================
+
   const musicButton =
     document.getElementById("musicButton");
 
@@ -108,21 +112,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   musicButton.addEventListener(
     "click",
-    function () {
+    async function () {
 
-      if (backgroundMusic.paused) {
+      try {
 
-        backgroundMusic.play();
+        if (backgroundMusic.paused) {
 
-        musicButton.textContent =
-          "❚❚ Pausar música";
+          await backgroundMusic.play();
 
-      } else {
+          musicButton.textContent =
+            "❚❚ Pausar música";
 
-        backgroundMusic.pause();
+        } else {
 
-        musicButton.textContent =
-          "♫ Ouvir nossa música";
+          backgroundMusic.pause();
+
+          musicButton.textContent =
+            "♫ Ouvir nossa música";
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Não foi possível reproduzir a música:",
+          error
+        );
 
       }
 
