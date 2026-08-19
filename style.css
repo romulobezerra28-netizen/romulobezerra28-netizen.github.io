@@ -330,19 +330,22 @@ a {
 
   0%,
   100% {
+    transform: scale(1);
+
     box-shadow:
       0 4px 16px
       rgba(90, 60, 60, .08);
   }
 
   50% {
+    transform: scale(1.035);
+
     box-shadow:
-      0 4px 22px
-      rgba(90, 60, 60, .22);
+      0 6px 25px
+      rgba(90, 60, 60, .24);
   }
 
 }
-
 
 /* Mantém as outras observações do convite */
 
