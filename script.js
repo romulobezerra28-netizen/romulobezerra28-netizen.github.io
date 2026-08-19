@@ -323,7 +323,7 @@ rsvpForm.addEventListener(
     const data = {
 
       nome:
-        formData.get("name") || "",
+        formData.get("guestName") || "",
 
       presenca:
         formData.get("attendance") || "",
@@ -332,8 +332,7 @@ rsvpForm.addEventListener(
         formData.get("companionName") || "",
 
       mensagem:
-        formData.get("message") || ""
-
+        formData.get("guestMessage") || ""
     };
 
 
