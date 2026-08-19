@@ -1,12 +1,17 @@
 :root {
-  --nude: #e8d3c3;
-  --nude-light: #f7eee8;
-  --nude-deep: #d7b9a8;
-  --rose: #b98282;
-  --rose-deep: #956464;
-  --ink: #282222;
-  --white: #fffaf7;
-  --line: rgba(40, 34, 34, .16);
+  --nude: #F0DDB9;
+  --nude-light: #F8EEDB;
+  --nude-deep: #D8B77A;
+
+  --rose: #E98A7D;
+  --rose-deep: #C9675D;
+
+  --sage: #879477;
+  --gold: #B88A45;
+
+  --ink: #28211D;
+  --white: #FFF9EF;
+  --line: rgba(40, 33, 29, .16);
 
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Montserrat", Arial, sans-serif;
