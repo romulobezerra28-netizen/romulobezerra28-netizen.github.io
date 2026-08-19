@@ -311,20 +311,99 @@ companionInputs.forEach(
 
 rsvpForm.addEventListener(
   "submit",
-  function (event) {
+  async function (event) {
 
     event.preventDefault();
 
-    rsvpForm.hidden =
+
+    const formData =
+      new FormData(rsvpForm);
+
+
+    const data = {
+
+      nome:
+        formData.get("name") || "",
+
+      presenca:
+        formData.get("attendance") || "",
+
+      acompanhante:
+        formData.get("companionName") || "",
+
+      mensagem:
+        formData.get("message") || ""
+
+    };
+
+
+    const submitButton =
+      rsvpForm.querySelector(
+        'button[type="submit"]'
+      );
+
+
+    submitButton.disabled =
       true;
 
-    rsvpSuccess.hidden =
-      false;
+    submitButton.textContent =
+      "ENVIANDO...";
 
-    rsvpSuccess.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+
+    try {
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycby3d7q2qH_R-u7NGoh2u-y1Y00pKuUF2u9fV8JxtXy9fQqDEVkwlcfJDT8e5kSGYj8/exec",
+        {
+
+          method: "POST",
+
+          mode: "no-cors",
+
+          headers: {
+            "Content-Type":
+              "text/plain"
+          },
+
+          body:
+            JSON.stringify(data)
+
+        }
+      );
+
+
+      rsvpForm.hidden =
+        true;
+
+      rsvpSuccess.hidden =
+        false;
+
+      rsvpSuccess.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao enviar confirmação:",
+        error
+      );
+
+
+      submitButton.disabled =
+        false;
+
+      submitButton.textContent =
+        "ENVIAR CONFIRMAÇÃO";
+
+
+      alert(
+        "Não foi possível enviar sua confirmação. Tente novamente."
+      );
+
+    }
 
   }
 );
