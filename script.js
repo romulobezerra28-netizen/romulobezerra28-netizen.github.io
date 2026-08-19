@@ -122,14 +122,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           musicButton.textContent =
             "❚❚ Pausar música";
-
+musicButton.classList.add("playing");
         } else {
 
           backgroundMusic.pause();
 
           musicButton.textContent =
             "♫ Ouvir nossa música";
-
+musicButton.classList.remove("playing");
         }
 
       } catch (error) {
