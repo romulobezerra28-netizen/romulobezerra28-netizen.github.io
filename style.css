@@ -718,7 +718,7 @@ a {
 
   border: 1px solid var(--line);
 
-  aspect-ratio: 4 / 5;
+  border-radius: 2px;
 }
 
 
@@ -1017,11 +1017,10 @@ a {
   }
 
 
- .photo-placeholder,
+.photo-placeholder,
 .photo-large {
   min-height: auto;
   margin-top: 0;
-  aspect-ratio: 4 / 5;
 }
 
 
