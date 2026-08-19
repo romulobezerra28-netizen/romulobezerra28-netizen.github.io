@@ -195,27 +195,138 @@ musicButton.classList.remove("playing");
   );
 
 
-  /* =========================
-     BOTÃO DE CONFIRMAÇÃO
-  ========================== */
+ /* =========================
+   FORMULÁRIO DE CONFIRMAÇÃO
+========================== */
 
-  const rsvpButton =
-    document.getElementById(
-      "rsvpButton"
+const rsvpForm =
+  document.getElementById("rsvpForm");
+
+const attendanceInputs =
+  document.querySelectorAll(
+    'input[name="attendance"]'
+  );
+
+const companionGroup =
+  document.getElementById("companionGroup");
+
+const companionInputs =
+  document.querySelectorAll(
+    'input[name="companion"]'
+  );
+
+const companionNameGroup =
+  document.getElementById(
+    "companionNameGroup"
+  );
+
+const companionName =
+  document.getElementById(
+    "companionName"
+  );
+
+const rsvpSuccess =
+  document.getElementById(
+    "rsvpSuccess"
+  );
+
+
+attendanceInputs.forEach(
+  (input) => {
+
+    input.addEventListener(
+      "change",
+      function () {
+
+        if (
+          this.value === "sim"
+        ) {
+
+          companionGroup.hidden =
+            false;
+
+        } else {
+
+          companionGroup.hidden =
+            true;
+
+          companionNameGroup.hidden =
+            true;
+
+          companionInputs.forEach(
+            (radio) => {
+              radio.checked = false;
+            }
+          );
+
+          companionName.value =
+            "";
+
+        }
+
+      }
     );
 
+  }
+);
 
-  rsvpButton.addEventListener(
-    "click",
-    (event) => {
 
-      event.preventDefault();
+companionInputs.forEach(
+  (input) => {
 
-      alert(
-        "Em breve você poderá confirmar sua presença por aqui. ❤️"
-      );
+    input.addEventListener(
+      "change",
+      function () {
 
-    }
-  );
+        if (
+          this.value ===
+          "acompanhante"
+        ) {
+
+          companionNameGroup.hidden =
+            false;
+
+          companionName.required =
+            true;
+
+        } else {
+
+          companionNameGroup.hidden =
+            true;
+
+          companionName.required =
+            false;
+
+          companionName.value =
+            "";
+
+        }
+
+      }
+    );
+
+  }
+);
+
+
+rsvpForm.addEventListener(
+  "submit",
+  function (event) {
+
+    event.preventDefault();
+
+    rsvpForm.hidden =
+      true;
+
+    rsvpSuccess.hidden =
+      false;
+
+    rsvpSuccess.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+);
 
 });
