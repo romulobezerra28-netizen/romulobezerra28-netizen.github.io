@@ -95,6 +95,39 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown,
     1000
   );
+  // =========================
+  // MÚSICA
+  // =========================
+
+  const musicButton =
+    document.getElementById("musicButton");
+
+  const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+
+  musicButton.addEventListener(
+    "click",
+    function () {
+
+      if (backgroundMusic.paused) {
+
+        backgroundMusic.play();
+
+        musicButton.textContent =
+          "❚❚ Pausar música";
+
+      } else {
+
+        backgroundMusic.pause();
+
+        musicButton.textContent =
+          "♫ Ouvir nossa música";
+
+      }
+
+    }
+  );
 
 
   /* =========================
