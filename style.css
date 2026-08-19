@@ -250,17 +250,107 @@ a {
 }
 
 
-.music-note,
+/* =========================
+   BOTÃO DA MÚSICA
+========================= */
+
+.music-note {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+
+  padding:
+    11px 20px;
+
+  border:
+    1px solid var(--rose-deep);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 250, 247, .55);
+
+  color:
+    var(--rose-deep);
+
+  font:
+    500 .85rem
+    var(--serif);
+
+  letter-spacing:
+    .08em;
+
+  cursor: pointer;
+
+  transition:
+    all .3s ease;
+
+  box-shadow:
+    0 4px 16px
+    rgba(90, 60, 60, .08);
+}
+
+
+.music-note:hover {
+  background:
+    var(--rose-deep);
+
+  color:
+    var(--white);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 7px 20px
+    rgba(90, 60, 60, .15);
+}
+
+
+.music-note:active {
+  transform:
+    translateY(0);
+}
+
+
+/* Estado enquanto a música toca */
+
+.music-note.playing {
+  animation:
+    musicPulse 2s ease-in-out infinite;
+}
+
+
+@keyframes musicPulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 4px 16px
+      rgba(90, 60, 60, .08);
+  }
+
+  50% {
+    box-shadow:
+      0 4px 22px
+      rgba(90, 60, 60, .22);
+  }
+
+}
+
+
+/* Mantém as outras observações do convite */
+
 .gallery-note,
 .small-note {
   font-size: .7rem;
 
   opacity: .65;
-}
-
-
-.music-note {
-  margin-top: 16px;
 }
 
 
