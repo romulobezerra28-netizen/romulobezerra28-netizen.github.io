@@ -1493,3 +1493,42 @@ a {
   accent-color:
     var(--rose-deep) !important;
 }
+.family-mini-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 28px auto 32px;
+}
+
+.family-mini-gallery img {
+  width: 90px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+}
+
+.family-mini-gallery .center-photo {
+  width: 105px;
+  height: 140px;
+}
+
+@media (max-width: 600px) {
+
+  .family-mini-gallery {
+    gap: 10px;
+    margin: 24px auto 28px;
+  }
+
+  .family-mini-gallery img {
+    width: 78px;
+    height: 104px;
+  }
+
+  .family-mini-gallery .center-photo {
+    width: 90px;
+    height: 120px;
+  }
+
+}
