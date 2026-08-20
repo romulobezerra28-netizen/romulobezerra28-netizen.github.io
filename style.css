@@ -1494,11 +1494,55 @@ a {
     var(--rose-deep) !important;
 }
 .family-mini-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin: 28px auto 32px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 28px auto 32px !important;
+}
+
+.family-mini-gallery img {
+  display: block !important;
+  width: 90px !important;
+  height: 120px !important;
+  min-width: 0 !important;
+  max-width: 90px !important;
+  max-height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 4px !important;
+}
+
+.family-mini-gallery img.center-photo {
+  width: 105px !important;
+  height: 140px !important;
+  max-width: 105px !important;
+  max-height: 140px !important;
+}
+
+@media (max-width: 600px) {
+
+  .family-mini-gallery {
+    gap: 8px !important;
+    max-width: 330px !important;
+  }
+
+  .family-mini-gallery img {
+    width: 78px !important;
+    height: 104px !important;
+    max-width: 78px !important;
+    max-height: 104px !important;
+  }
+
+  .family-mini-gallery img.center-photo {
+    width: 90px !important;
+    height: 120px !important;
+    max-width: 90px !important;
+    max-height: 120px !important;
+  }
+
 }
 
 .family-mini-gallery img {
