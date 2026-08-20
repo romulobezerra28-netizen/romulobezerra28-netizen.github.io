@@ -855,7 +855,9 @@ a {
   width: 100%;
   height: auto;
 }
-
+.convite-photo {
+  height: 360px;
+}
 .convite-photo img {
   width: auto;
   height: 100%;
