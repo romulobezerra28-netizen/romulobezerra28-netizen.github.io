@@ -854,6 +854,7 @@ a {
 }
 .convite-photo {
   aspect-ratio: 3 / 4;
+  min-height: 0;
 }
 .convite-photo img {
   width: 100%;
