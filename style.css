@@ -812,6 +812,13 @@ a {
 
   overflow: hidden;
 
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: var(--nude);
 
   border: 1px solid var(--line);
@@ -824,18 +831,18 @@ a {
   display: block;
 
   width: 100%;
-  height: auto;
+  height: 100%;
 
   object-fit: contain;
 
   background: var(--nude);
 
-  margin: 0 auto;
+  margin: 0;
 }
 
 
 .photo-large {
-  margin-top: -30px;
+  margin-top: 0;
 }
 
 
