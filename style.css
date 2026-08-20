@@ -844,7 +844,14 @@ a {
 .photo-large {
   margin-top: 0;
 }
+.google-photo {
+  overflow: visible;
+}
 
+.google-photo img {
+  width: 100%;
+  height: auto;
+}
 
 .photo-placeholder::before {
   content: "♡";
