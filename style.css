@@ -833,7 +833,7 @@ a {
   width: 100%;
   height: 100%;
 
-  object-fit: contain;
+  object-fit: cover;
 
   background: var(--nude);
 
@@ -844,9 +844,7 @@ a {
 .photo-large {
   margin-top: 0;
 }
-.photo-large img {
-  object-fit: contain;
-}
+
 
 .photo-placeholder::before {
   content: "♡";
