@@ -241,7 +241,7 @@ background: #342522;
 
 
 .btn-outline:hover {
-  background: var(--ink);
+  background: #342522;
   color: var(--white);
 }
 
