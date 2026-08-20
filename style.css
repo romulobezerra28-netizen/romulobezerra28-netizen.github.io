@@ -1576,12 +1576,15 @@ a {
   }
 
 }
-.reception-highlight {
-  margin: 24px auto 20px;
-  text-align: center;
-  color: var(--rose-deep);
-  font-family: var(--sans);
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .18em;
+.reception .reception-highlight {
+  display: block !important;
+  width: 100% !important;
+  margin: 24px auto 20px !important;
+  padding: 0 !important;
+  text-align: center !important;
+  color: var(--rose-deep) !important;
+  font-family: var(--sans) !important;
+  font-size: .68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .18em !important;
 }
