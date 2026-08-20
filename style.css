@@ -857,8 +857,9 @@ a {
   min-height: 0;
 }
 .convite-photo img {
-  width: 100%;
+  width: auto;
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
 }
 .photo-placeholder::before {
