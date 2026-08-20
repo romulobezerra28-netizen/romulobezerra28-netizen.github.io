@@ -844,7 +844,9 @@ a {
 .photo-large {
   margin-top: 0;
 }
-
+.photo-large img {
+  object-fit: contain;
+}
 
 .photo-placeholder::before {
   content: "♡";
