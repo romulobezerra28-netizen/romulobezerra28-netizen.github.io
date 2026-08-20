@@ -852,7 +852,10 @@ a {
   width: 100%;
   height: auto;
 }
-
+.convite-photo img {
+  width: 100%;
+  height: auto;
+}
 .photo-placeholder::before {
   content: "♡";
 
