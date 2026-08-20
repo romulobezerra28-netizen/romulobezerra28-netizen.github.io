@@ -955,23 +955,16 @@ a {
 
 .rsvp-form {
   max-width: 560px;
-
   margin: 40px auto 0;
+  padding: 36px 34px;
 
-  padding: 34px 32px;
+  background: rgba(255, 252, 246, .78);
 
-  background:
-    rgba(255, 250, 247, .62);
-
-  border:
-    1px solid
-    rgba(90, 60, 60, .14);
-
-  border-radius: 4px;
+  border: 1px solid rgba(184, 138, 69, .28);
+  border-radius: 6px;
 
   box-shadow:
-    0 12px 35px
-    rgba(90, 60, 60, .07);
+    0 14px 35px rgba(40, 33, 29, .06);
 
   text-align: left;
 }
@@ -988,29 +981,22 @@ a {
 
   margin-bottom: 10px;
 
-  color:
-    var(--rose-deep);
+  color: var(--rose-deep);
 
   font:
     600 .82rem
     var(--sans);
 
-  letter-spacing:
-    .08em;
-
-  text-transform:
-    uppercase;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 
 .form-group label span {
   font-weight: 400;
-
   opacity: .55;
 
-  text-transform:
-    none;
-
+  text-transform: none;
   letter-spacing: 0;
 }
 
@@ -1018,7 +1004,6 @@ a {
 .rsvp-form input[type="text"],
 .rsvp-form textarea {
   width: 100%;
-
   box-sizing: border-box;
 
   padding: 13px 4px;
@@ -1027,15 +1012,13 @@ a {
 
   border-bottom:
     1px solid
-    rgba(90, 60, 60, .25);
+    rgba(216, 183, 122, .65);
 
   border-radius: 0;
 
-  background:
-    transparent;
+  background: transparent;
 
-  color:
-    var(--text);
+  color: var(--text);
 
   font:
     1rem/1.5
@@ -1044,7 +1027,8 @@ a {
   outline: none;
 
   transition:
-    border-color .3s ease;
+    border-color .3s ease,
+    background .3s ease;
 }
 
 
@@ -1052,12 +1036,14 @@ a {
 .rsvp-form textarea:focus {
   border-bottom-color:
     var(--rose-deep);
+
+  background:
+    rgba(255, 250, 244, .45);
 }
 
 
 .rsvp-form textarea {
   resize: vertical;
-
   min-height: 100px;
 }
 
@@ -1066,21 +1052,19 @@ a {
   display: flex !important;
 
   align-items: center;
-
   gap: 12px;
 
   padding: 13px 15px;
-
   margin-bottom: 9px;
 
   border:
     1px solid
-    rgba(90, 60, 60, .13);
+    rgba(184, 138, 69, .22);
 
-  border-radius: 3px;
+  border-radius: 5px;
 
   background:
-    rgba(255, 255, 255, .35);
+    rgba(255, 255, 255, .42);
 
   color:
     var(--text) !important;
@@ -1090,9 +1074,7 @@ a {
     var(--serif) !important;
 
   letter-spacing: 0 !important;
-
-  text-transform:
-    none !important;
+  text-transform: none !important;
 
   cursor: pointer;
 
@@ -1103,10 +1085,10 @@ a {
 
 .choice:hover {
   border-color:
-    var(--rose-deep);
+    rgba(201, 103, 93, .55);
 
   background:
-    rgba(255, 250, 247, .9);
+    rgba(255, 250, 244, .82);
 
   transform:
     translateY(-1px);
@@ -1115,7 +1097,6 @@ a {
 
 .choice input[type="radio"] {
   width: 17px;
-
   height: 17px;
 
   margin: 0;
@@ -1133,18 +1114,35 @@ a {
   width: 100%;
 
   margin-top: 10px;
-
   padding: 14px 22px;
 
   border: none;
 
   cursor: pointer;
+
+  background:
+    var(--text);
+
+  color:
+    #fffaf4;
+
+  transition:
+    background .3s ease,
+    transform .25s ease;
+}
+
+
+.rsvp-form > .btn:hover {
+  background:
+    var(--rose-deep);
+
+  transform:
+    translateY(-1px);
 }
 
 
 .rsvp-form .small-note {
   margin-top: 18px;
-
   text-align: center;
 }
 
@@ -1158,16 +1156,16 @@ a {
 
   border:
     1px solid
-    rgba(90, 60, 60, .14);
+    rgba(184, 138, 69, .28);
 
   background:
-    rgba(255, 250, 247, .62);
+    rgba(255, 252, 246, .78);
 
   text-align: center;
 
   box-shadow:
-    0 12px 35px
-    rgba(90, 60, 60, .07);
+    0 14px 35px
+    rgba(40, 33, 29, .06);
 }
 
 
@@ -1187,6 +1185,9 @@ a {
 .rsvp-success p {
   margin: 0;
 
+  color:
+    var(--text);
+
   font:
     1rem/1.7
     var(--serif);
@@ -1199,7 +1200,6 @@ a {
 
   font-size: 2rem;
 }
-
 /* =========================
    PRESENTES
 ========================= */
