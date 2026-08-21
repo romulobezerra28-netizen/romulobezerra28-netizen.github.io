@@ -1349,6 +1349,273 @@
   </div>
 
 </section>
+    <!-- =========================
+     MODAL DE PRESENTE / PIX
+========================== -->
+
+<div
+  class="gift-modal"
+  id="giftModal"
+  hidden
+>
+
+  <div
+    class="gift-modal-overlay"
+    data-close-gift-modal
+  ></div>
+
+
+  <div
+    class="gift-modal-box"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="giftModalTitle"
+  >
+
+    <button
+      type="button"
+      class="gift-modal-close"
+      id="giftModalClose"
+      aria-label="Fechar"
+    >
+      ×
+    </button>
+
+
+    <!-- ESCOLHA DO VALOR -->
+
+    <div
+      class="gift-modal-choice"
+      id="giftModalChoice"
+    >
+
+      <p class="gift-category">
+        UM GESTO DE CARINHO
+      </p>
+
+      <h3 id="giftModalTitle">
+        Presente
+      </h3>
+
+      <p
+        class="gift-modal-description"
+        id="giftModalDescription"
+      >
+      </p>
+
+
+      <div class="gift-modal-suggested">
+
+        <span>
+          VALOR SUGERIDO
+        </span>
+
+        <strong id="giftSuggestedValue">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <p class="gift-modal-question">
+        Como deseja nos presentear?
+      </p>
+
+
+      <button
+        type="button"
+        class="gift-modal-option"
+        id="giftSuggestedButton"
+      >
+
+        <span>
+          USAR VALOR SUGERIDO
+        </span>
+
+        <strong id="giftSuggestedButtonValue">
+          R$ 0,00
+        </strong>
+
+      </button>
+
+
+      <button
+        type="button"
+        class="gift-modal-option gift-modal-option-outline"
+        id="giftOtherValueButton"
+      >
+
+        ESCOLHER UM VALOR MAIOR
+
+      </button>
+
+
+      <!-- OUTRO VALOR -->
+
+      <div
+        class="gift-modal-custom"
+        id="giftCustomValue"
+        hidden
+      >
+
+        <label for="giftCustomInput">
+          Qual valor você gostaria de nos presentear?
+        </label>
+
+
+        <div class="gift-value-input">
+
+          <span>
+            R$
+          </span>
+
+          <input
+            type="number"
+            id="giftCustomInput"
+            min="50"
+            step="1"
+            inputmode="decimal"
+            placeholder="0,00"
+          >
+
+        </div>
+
+
+        <p
+          class="gift-modal-error"
+          id="giftCustomError"
+          hidden
+        >
+          O valor escolhido precisa ser igual ou
+          superior ao valor sugerido.
+        </p>
+
+
+        <button
+          type="button"
+          class="gift-button gift-modal-continue"
+          id="giftCustomContinue"
+        >
+
+          CONTINUAR
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- PAGAMENTO PIX -->
+
+    <div
+      class="gift-modal-pix"
+      id="giftModalPix"
+      hidden
+    >
+
+      <p class="gift-category">
+        SEU GESTO DE CARINHO
+      </p>
+
+      <h3>
+        PIX
+      </h3>
+
+
+      <p class="gift-modal-pix-gift">
+        <span id="giftPixGift">
+          Presente
+        </span>
+
+        <strong id="giftPixValue">
+          R$ 0,00
+        </strong>
+      </p>
+
+
+      <div class="gift-pix-recipient">
+
+        <strong>
+          Edivania Tenório Cavalcante da Silva
+        </strong>
+
+        <span>
+          Nubank · Arapiraca — AL
+        </span>
+
+      </div>
+
+
+      <div class="gift-pix-key">
+
+        <span>
+          CHAVE PIX · CPF
+        </span>
+
+        <strong>
+          053.595.414-07
+        </strong>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="gift-button gift-copy-pix"
+        id="giftCopyPix"
+      >
+
+        📋 COPIAR CHAVE PIX
+
+      </button>
+
+
+      <button
+        type="button"
+        class="gift-button gift-show-qr"
+        id="giftShowQr"
+      >
+
+        ▣ MOSTRAR QR CODE
+
+      </button>
+
+
+      <div
+        class="gift-qr-container"
+        id="giftQrContainer"
+        hidden
+      >
+
+        <div
+          class="gift-qr"
+          id="giftQr"
+        ></div>
+
+        <p>
+          Aponte a câmera do seu celular
+          para o QR Code para realizar o PIX.
+        </p>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="gift-modal-back"
+        id="giftModalBack"
+      >
+
+        ← VOLTAR
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
   </main>
 
 
