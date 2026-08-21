@@ -1506,114 +1506,181 @@
     </div>
 
 
-    <!-- PAGAMENTO PIX -->
+    <!-- PAGAMENTO -->
+
+<div
+  class="gift-modal-pix"
+  id="giftModalPix"
+  hidden
+>
+
+  <p class="gift-category">
+    SEU GESTO DE CARINHO
+  </p>
+
+  <h3>
+    Escolha como presentear
+  </h3>
+
+
+  <p class="gift-modal-pix-gift">
+
+    <span id="giftPixGift">
+      Presente
+    </span>
+
+    <strong id="giftPixValue">
+      R$ 0,00
+    </strong>
+
+  </p>
+
+
+  <!-- =========================
+       PIX
+  ========================== -->
+
+  <div class="gift-payment-option">
+
+    <p class="gift-payment-title">
+      PIX
+    </p>
+
+
+    <div class="gift-pix-recipient">
+
+      <strong>
+        Edivania Tenório Cavalcante da Silva
+      </strong>
+
+      <span>
+        Nubank · Arapiraca — AL
+      </span>
+
+    </div>
+
+
+    <div class="gift-pix-key">
+
+      <span>
+        CHAVE PIX · CPF
+      </span>
+
+      <strong>
+        053.595.414-07
+      </strong>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="gift-button gift-copy-pix"
+      id="giftCopyPix"
+    >
+      📋 COPIAR CHAVE PIX
+    </button>
+
+
+    <button
+      type="button"
+      class="gift-button gift-show-qr"
+      id="giftShowQr"
+    >
+      ▣ MOSTRAR QR CODE
+    </button>
+
 
     <div
-      class="gift-modal-pix"
-      id="giftModalPix"
+      class="gift-qr-container"
+      id="giftQrContainer"
       hidden
     >
 
-      <p class="gift-category">
-        SEU GESTO DE CARINHO
-      </p>
-
-      <h3>
-        PIX
-      </h3>
-
-
-      <p class="gift-modal-pix-gift">
-        <span id="giftPixGift">
-          Presente
-        </span>
-
-        <strong id="giftPixValue">
-          R$ 0,00
-        </strong>
-      </p>
-
-
-      <div class="gift-pix-recipient">
-
-        <strong>
-          Edivania Tenório Cavalcante da Silva
-        </strong>
-
-        <span>
-          Nubank · Arapiraca — AL
-        </span>
-
-      </div>
-
-
-      <div class="gift-pix-key">
-
-        <span>
-          CHAVE PIX · CPF
-        </span>
-
-        <strong>
-          053.595.414-07
-        </strong>
-
-      </div>
-
-
-      <button
-        type="button"
-        class="gift-button gift-copy-pix"
-        id="giftCopyPix"
-      >
-
-        📋 COPIAR CHAVE PIX
-
-      </button>
-
-
-      <button
-        type="button"
-        class="gift-button gift-show-qr"
-        id="giftShowQr"
-      >
-
-        ▣ MOSTRAR QR CODE
-
-      </button>
-
-
       <div
-        class="gift-qr-container"
-        id="giftQrContainer"
-        hidden
-      >
+        class="gift-qr"
+        id="giftQr"
+      ></div>
 
-        <div
-          class="gift-qr"
-          id="giftQr"
-        ></div>
-
-        <p>
-          Aponte a câmera do seu celular
-          para o QR Code para realizar o PIX.
-        </p>
-
-      </div>
-
-
-      <button
-        type="button"
-        class="gift-modal-back"
-        id="giftModalBack"
-      >
-
-        ← VOLTAR
-
-      </button>
+      <p>
+        Aponte a câmera do seu celular
+        para o QR Code para realizar o PIX.
+      </p>
 
     </div>
 
   </div>
+
+
+  <!-- =========================
+       CARTÃO DE CRÉDITO
+  ========================== -->
+
+  <div class="gift-payment-option gift-card-option">
+
+    <p class="gift-payment-title">
+      CARTÃO DE CRÉDITO
+    </p>
+
+
+    <p class="gift-card-description">
+      Você também pode nos presentear
+      usando seu cartão de crédito,
+      com possibilidade de parcelamento
+      em até 3x.
+    </p>
+
+
+    <button
+      type="button"
+      class="gift-button gift-card-button"
+      id="giftCardButton"
+    >
+      💳 PAGAR COM CARTÃO
+    </button>
+
+
+    <div
+      class="gift-card-alternatives"
+      id="giftCardAlternatives"
+      hidden
+    >
+
+      <p>
+        Este valor ainda não possui um link
+        de pagamento por cartão.
+      </p>
+
+      <span>
+        Você pode escolher uma destas opções:
+      </span>
+
+
+      <div
+        class="gift-card-values"
+        id="giftCardValues"
+      ></div>
+
+
+      <small>
+        Ou, se preferir, você pode realizar
+        o PIX no valor exato que escolheu.
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <!-- VOLTAR -->
+
+  <button
+    type="button"
+    class="gift-modal-back"
+    id="giftModalBack"
+  >
+    ← VOLTAR
+  </button>
 
 </div>
   </main>
