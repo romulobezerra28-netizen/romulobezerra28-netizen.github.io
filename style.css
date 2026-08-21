@@ -1242,7 +1242,7 @@ color: var(--text);
 
   text-align: center;
 
- background: #F4E8E1;
+ background: rgba(255, 252, 246, .78);
  color: var(--text);
 }
 
