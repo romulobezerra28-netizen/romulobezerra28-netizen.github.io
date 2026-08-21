@@ -1204,30 +1204,31 @@ color: var(--text);
    PRESENTES
 ========================= */
 
-/* =========================
-   PRESENTES
-========================= */
-
 .gifts {
-  background: var(--nude-light);
+  background:
+    var(--nude-light);
 
-  text-align: center;
+  text-align:
+    center;
 }
 
 
 .gifts-introduction {
-  max-width: 720px;
+  max-width:
+    720px;
 
   margin:
-    0 auto 80px;
+    0 auto 90px;
 
   font:
     1.15rem/1.75
     var(--serif);
 
-  color: var(--text);
+  color:
+    var(--text);
 
-  opacity: .82;
+  opacity:
+    .82;
 }
 
 
@@ -1236,37 +1237,45 @@ color: var(--text);
 ========================= */
 
 .gift-environment {
-  max-width: 1100px;
+  max-width:
+    1100px;
 
   margin:
-    0 auto 90px;
+    0 auto 100px;
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
-    1fr 1fr;
+    minmax(0, 1fr)
+    minmax(0, 1fr);
 
-  align-items: stretch;
+  align-items:
+    stretch;
 
-  text-align: left;
+  text-align:
+    left;
 }
 
 
 .gift-environment-reverse {
   grid-template-columns:
-    1fr 1fr;
+    minmax(0, 1fr)
+    minmax(0, 1fr);
 }
 
 
 .gift-environment-reverse
 .gift-image {
-  order: 2;
+  order:
+    2;
 }
 
 
 .gift-environment-reverse
 .gift-environment-content {
-  order: 1;
+  order:
+    1;
 }
 
 
@@ -1275,14 +1284,20 @@ color: var(--text);
 ========================= */
 
 .gift-image {
-  min-height: 500px;
+  min-height:
+    620px;
 
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  overflow: hidden;
+  justify-content:
+    center;
+
+  overflow:
+    hidden;
 
   background:
     var(--nude);
@@ -1294,30 +1309,36 @@ color: var(--text);
     .65rem
     var(--sans);
 
-  letter-spacing: .15em;
+  letter-spacing:
+    .15em;
 
-  text-transform: uppercase;
+  text-transform:
+    uppercase;
 }
 
 
 .gift-image span {
-  opacity: .45;
+  opacity:
+    .45;
 }
 
 
 /* =========================
-   CONTEÚDO
+   CABEÇALHO DO AMBIENTE
 ========================= */
 
 .gift-environment-content {
   padding:
-    45px 50px;
+    55px 55px 60px;
 
-  display: flex;
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  justify-content: center;
+  justify-content:
+    flex-start;
 
   background:
     rgba(255, 252, 246, .72);
@@ -1328,9 +1349,11 @@ color: var(--text);
 }
 
 
+/* Identificação do ambiente */
+
 .gift-category {
   margin:
-    0 0 14px;
+    0 0 15px;
 
   color:
     var(--rose-deep);
@@ -1339,15 +1362,19 @@ color: var(--text);
     600 .62rem
     var(--sans);
 
-  letter-spacing: .18em;
+  letter-spacing:
+    .18em;
 }
 
 
+/* Título do ambiente */
+
 .gift-environment-content > h3 {
-  max-width: 500px;
+  max-width:
+    500px;
 
   margin:
-    0 0 42px;
+    0;
 
   color:
     var(--text);
@@ -1357,39 +1384,69 @@ color: var(--text);
     var(--serif);
 }
 
+
+/* Separador entre cabeçalho e presentes */
+
+.gift-environment-content > h3::after {
+  content:
+    "❦";
+
+  display:
+    block;
+
+  margin:
+    25px 0 35px;
+
+  color:
+    var(--rose-deep);
+
+  font-size:
+    1.25rem;
+
+  opacity:
+    .55;
+}
+
+
 /* =========================
    PRESENTES INDIVIDUAIS
 ========================= */
 
 .gift-item {
   padding:
-    20px 0;
+    23px 0;
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
-    1fr auto;
+    minmax(0, 1fr)
+    auto;
 
-  gap: 25px;
+  gap:
+    30px;
 
-  align-items: center;
+  align-items:
+    center;
 
   border-top:
     1px solid
-    rgba(149, 100, 100, .16);
+    rgba(149, 100, 100, .14);
 }
 
 
 .gift-item:last-child {
   border-bottom:
     1px solid
-    rgba(149, 100, 100, .16);
+    rgba(149, 100, 100, .14);
 }
 
 
+/* Nome do presente */
+
 .gift-item h4 {
   margin:
-    0 0 5px;
+    0 0 7px;
 
   color:
     var(--text);
@@ -1400,30 +1457,46 @@ color: var(--text);
 }
 
 
-.gift-item p {
-  max-width: 330px;
+/* Descrição */
 
-  margin: 0;
+.gift-item p {
+  max-width:
+    360px;
+
+  margin:
+    0;
 
   color:
     var(--text);
 
   font:
-    .82rem/1.5
+    .82rem/1.55
     var(--serif);
 
-  opacity: .65;
+  opacity:
+    .65;
 }
 
 
+/* =========================
+   VALOR + BOTÃO
+========================= */
+
 .gift-item-action {
-  display: flex;
+  min-width:
+    100px;
 
-  flex-direction: column;
+  display:
+    flex;
 
-  align-items: flex-end;
+  flex-direction:
+    column;
 
-  gap: 9px;
+  align-items:
+    flex-end;
+
+  gap:
+    10px;
 }
 
 
@@ -1435,7 +1508,11 @@ color: var(--text);
     600 1rem
     var(--sans);
 
-  letter-spacing: .04em;
+  letter-spacing:
+    .04em;
+
+  white-space:
+    nowrap;
 }
 
 
@@ -1444,12 +1521,17 @@ color: var(--text);
 ========================= */
 
 .gift-button {
-  display: inline-flex;
+  display:
+    inline-flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  min-height: 38px;
+  justify-content:
+    center;
+
+  min-height:
+    38px;
 
   padding:
     9px 16px;
@@ -1471,9 +1553,11 @@ color: var(--text);
     600 .58rem
     var(--sans);
 
-  letter-spacing: .12em;
+  letter-spacing:
+    .12em;
 
-  cursor: pointer;
+  cursor:
+    pointer;
 
   transition:
     background .25s ease,
@@ -1499,7 +1583,8 @@ color: var(--text);
 ========================= */
 
 .gift-highlight {
-  max-width: 850px;
+  max-width:
+    850px;
 
   margin:
     20px auto 70px;
@@ -1507,7 +1592,8 @@ color: var(--text);
   padding:
     70px 40px;
 
-  text-align: center;
+  text-align:
+    center;
 
   background:
     rgba(255, 252, 246, .72);
@@ -1523,24 +1609,29 @@ color: var(--text);
 
 
 .gift-highlight-ornament {
-  margin-bottom: 15px;
+  margin-bottom:
+    15px;
 
   color:
     var(--rose-deep);
 
-  font-size: 2rem;
+  font-size:
+    2rem;
 
-  opacity: .7;
+  opacity:
+    .7;
 }
 
 
 .gift-highlight .gift-category {
-  margin-bottom: 18px;
+  margin-bottom:
+    18px;
 }
 
 
 .gift-highlight h3 {
-  max-width: 620px;
+  max-width:
+    620px;
 
   margin:
     0 auto 25px;
@@ -1555,9 +1646,11 @@ color: var(--text);
 
 
 .gift-highlight > strong {
-  display: block;
+  display:
+    block;
 
-  margin-bottom: 22px;
+  margin-bottom:
+    22px;
 
   color:
     var(--rose-deep);
@@ -1573,9 +1666,11 @@ color: var(--text);
 ========================= */
 
 .gift-other {
-  margin-top: 20px;
+  margin-top:
+    20px;
 
-  text-align: center;
+  text-align:
+    center;
 }
 
 
@@ -1593,9 +1688,11 @@ color: var(--text);
 
 
 .gift-other span {
-  display: block;
+  display:
+    block;
 
-  margin-bottom: 20px;
+  margin-bottom:
+    20px;
 
   color:
     var(--text);
@@ -1604,7 +1701,8 @@ color: var(--text);
     .85rem
     var(--serif);
 
-  opacity: .65;
+  opacity:
+    .65;
 }
 
 
@@ -1630,7 +1728,8 @@ color: var(--text);
 @media (max-width: 760px) {
 
   .gifts-introduction {
-    margin-bottom: 55px;
+    margin-bottom:
+      60px;
 
     padding:
       0 10px;
@@ -1639,39 +1738,55 @@ color: var(--text);
 
   .gift-environment,
   .gift-environment-reverse {
-    display: flex;
+    display:
+      flex;
 
-    flex-direction: column;
+    flex-direction:
+      column;
 
-    margin-bottom: 60px;
+    margin-bottom:
+      65px;
   }
 
 
   .gift-environment-reverse
   .gift-image {
-    order: 1;
+    order:
+      1;
   }
 
 
   .gift-environment-reverse
   .gift-environment-content {
-    order: 2;
+    order:
+      2;
   }
 
 
   .gift-image {
-    min-height: 300px;
+    min-height:
+      300px;
   }
 
 
   .gift-environment-content {
     padding:
-      35px 25px;
+      40px 25px 45px;
   }
 
 
   .gift-environment-content > h3 {
-    font-size: 2rem;
+    max-width:
+      100%;
+
+    font-size:
+      2rem;
+  }
+
+
+  .gift-environment-content > h3::after {
+    margin:
+      22px 0 28px;
   }
 
 
@@ -1679,21 +1794,35 @@ color: var(--text);
     grid-template-columns:
       1fr;
 
-    gap: 15px;
+    gap:
+      14px;
+
+    padding:
+      22px 0;
+  }
+
+
+  .gift-item p {
+    max-width:
+      100%;
   }
 
 
   .gift-item-action {
+    min-width:
+      0;
+
+    width:
+      100%;
+
     align-items:
-      flex-start;
+      center;
 
     flex-direction:
       row;
 
     justify-content:
       space-between;
-
-    width: 100%;
   }
 
 
@@ -1706,7 +1835,6 @@ color: var(--text);
   }
 
 }
-
 /* =========================
    RODAPÉ
 ========================= */
