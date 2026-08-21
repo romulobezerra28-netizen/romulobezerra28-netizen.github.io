@@ -1241,7 +1241,7 @@ color: var(--text);
 
   text-align: center;
 
- background: rgba(255, 252, 246, .78);
+ background: var(--nude);
  color: var(--text);
 }
 
