@@ -1344,10 +1344,10 @@ color: var(--text);
 
 
 .gift-environment-content > h3 {
-  max-width: 430px;
+  max-width: 500px;
 
   margin:
-    0 0 30px;
+    0 0 42px;
 
   color:
     var(--text);
@@ -1356,7 +1356,6 @@ color: var(--text);
     500 clamp(2rem, 3vw, 3rem)/1.1
     var(--serif);
 }
-
 
 /* =========================
    PRESENTES INDIVIDUAIS
