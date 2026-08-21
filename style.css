@@ -241,8 +241,9 @@ background: #4A3530;
 
 
 .btn-outline:hover {
-  background: #342522;
-  color: var(--white);
+ background: #F4E8E1;
+
+color: var(--text);
 }
 
 
@@ -1253,7 +1254,7 @@ background: #4A3530;
   margin:
     -15px auto 5px;
 
-  color: var(--nude);
+  color: var(--rose-deep);
 
   font-size: 6rem;
 
@@ -1262,6 +1263,7 @@ background: #4A3530;
 
 
 .footer h2 {
+  color: var(--text);
   max-width: 850px;
 
   margin:
@@ -1289,7 +1291,7 @@ background: #4A3530;
     500 2.7rem
     var(--serif);
 
-  color: var(--nude);
+  color: var(--rose-deep);
 }
 
 
@@ -1300,7 +1302,8 @@ background: #4A3530;
 
   letter-spacing: .3em;
 
-  opacity: .6;
+  color: var(--rose-deep);
+opacity: .7;
 }
 
 
