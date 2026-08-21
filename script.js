@@ -500,721 +500,1018 @@ rsvpForm.addEventListener(
   }
 );
 
-  /* =========================
-     PRESENTES / MODAL / PIX
-  ========================== */
+ /* =========================
+   PRESENTES / MODAL / PIX
+========================== */
 
-  const giftModal =
-    document.getElementById("giftModal");
+const giftModal =
+  document.getElementById("giftModal");
 
-  const giftModalClose =
-    document.getElementById("giftModalClose");
+const giftModalClose =
+  document.getElementById("giftModalClose");
 
-  const giftModalOverlay =
-    document.querySelector("[data-close-gift-modal]");
+const giftModalOverlay =
+  document.querySelector("[data-close-gift-modal]");
 
-  const giftModalChoice =
-    document.getElementById("giftModalChoice");
+const giftModalChoice =
+  document.getElementById("giftModalChoice");
 
-  const giftModalPix =
-    document.getElementById("giftModalPix");
+const giftModalPix =
+  document.getElementById("giftModalPix");
 
-  const giftModalTitle =
-    document.getElementById("giftModalTitle");
+const giftModalTitle =
+  document.getElementById("giftModalTitle");
 
-  const giftModalDescription =
-    document.getElementById("giftModalDescription");
+const giftModalDescription =
+  document.getElementById("giftModalDescription");
 
-  const giftSuggestedValue =
-    document.getElementById("giftSuggestedValue");
+const giftSuggestedValue =
+  document.getElementById("giftSuggestedValue");
 
-  const giftSuggestedButton =
-    document.getElementById("giftSuggestedButton");
+const giftSuggestedButton =
+  document.getElementById("giftSuggestedButton");
 
-  const giftSuggestedButtonValue =
-    document.getElementById("giftSuggestedButtonValue");
+const giftSuggestedButtonValue =
+  document.getElementById("giftSuggestedButtonValue");
 
-  const giftOtherValueButton =
-    document.getElementById("giftOtherValueButton");
+const giftOtherValueButton =
+  document.getElementById("giftOtherValueButton");
 
-  const giftCustomValue =
-    document.getElementById("giftCustomValue");
+const giftCustomValue =
+  document.getElementById("giftCustomValue");
 
-  const giftCustomInput =
-    document.getElementById("giftCustomInput");
+const giftCustomInput =
+  document.getElementById("giftCustomInput");
 
-  const giftCustomError =
-    document.getElementById("giftCustomError");
+const giftCustomError =
+  document.getElementById("giftCustomError");
 
-  const giftCustomContinue =
-    document.getElementById("giftCustomContinue");
+const giftCustomContinue =
+  document.getElementById("giftCustomContinue");
 
-  const giftPixGift =
-    document.getElementById("giftPixGift");
+const giftPixGift =
+  document.getElementById("giftPixGift");
 
-  const giftPixValue =
-    document.getElementById("giftPixValue");
+const giftPixValue =
+  document.getElementById("giftPixValue");
 
-  const giftCopyPix =
-    document.getElementById("giftCopyPix");
+const giftCopyPix =
+  document.getElementById("giftCopyPix");
 
-  const giftShowQr =
-    document.getElementById("giftShowQr");
+const giftShowQr =
+  document.getElementById("giftShowQr");
 
-  const giftQrContainer =
-    document.getElementById("giftQrContainer");
+const giftQrContainer =
+  document.getElementById("giftQrContainer");
 
-  const giftQr =
-    document.getElementById("giftQr");
+const giftQr =
+  document.getElementById("giftQr");
 
-  const giftModalBack =
-    document.getElementById("giftModalBack");
+const giftModalBack =
+  document.getElementById("giftModalBack");
 
 
-  let selectedGift =
+/* =========================
+   CARTÃO DE CRÉDITO
+========================== */
+
+const giftCardButton =
+  document.getElementById("giftCardButton");
+
+const giftCardAlternatives =
+  document.getElementById("giftCardAlternatives");
+
+const giftCardValues =
+  document.getElementById("giftCardValues");
+
+
+let selectedGift = "";
+
+let selectedSuggestedValue = 50;
+
+let selectedValue = 50;
+
+
+/* =========================
+   DADOS DO PIX
+========================== */
+
+const PIX_KEY =
+  "05359541407";
+
+const PIX_NAME =
+  "EDIVANIA TENORIO CAVALCANTE DA SILVA";
+
+const PIX_CITY =
+  "ARAPIRACA";
+
+
+/* =========================
+   LINKS PAGBANK
+========================== */
+
+const PAGBANK_LINKS = {
+
+  50:
+    "https://pag.ae/825nx3XcG",
+
+  80:
+    "https://pag.ae/825nxUnxG",
+
+  100:
+    "https://pag.ae/825nyDs2P",
+
+  120:
+    "https://pag.ae/825nA8Aem",
+
+  150:
+    "https://pag.ae/825nAAaum",
+
+  200:
+    "https://pag.ae/825nB57w1",
+
+  250:
+    "https://pag.ae/825nBGkX8",
+
+  300:
+    "https://pag.ae/825nC7f-m",
+
+  500:
+    "https://pag.ae/825nCx-S8"
+
+};
+
+
+/* =========================
+   VALORES DISPONÍVEIS
+========================== */
+
+const PAGBANK_VALUES =
+  Object.keys(PAGBANK_LINKS)
+    .map(Number)
+    .sort(
+      (a, b) => a - b
+    );
+
+
+/* =========================
+   FORMATAR DINHEIRO
+========================== */
+
+function formatMoney(value) {
+
+  return Number(value).toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL"
+    }
+  );
+
+}
+
+
+/* =========================
+   ENCONTRAR VALORES MAIS PRÓXIMOS
+========================== */
+
+function getClosestPagBankValues(
+  value
+) {
+
+  return PAGBANK_VALUES
+    .map(
+      (availableValue) => ({
+        value: availableValue,
+
+        difference:
+          Math.abs(
+            availableValue -
+            value
+          )
+      })
+    )
+
+    .sort(
+      (a, b) => {
+
+        if (
+          a.difference !==
+          b.difference
+        ) {
+
+          return (
+            a.difference -
+            b.difference
+          );
+
+        }
+
+        return (
+          a.value -
+          b.value
+        );
+
+      }
+    )
+
+    .slice(0, 3)
+
+    .map(
+      (item) =>
+        item.value
+    )
+
+    .sort(
+      (a, b) =>
+        a - b
+    );
+
+}
+
+
+/* =========================
+   ABRIR MODAL
+========================== */
+
+function openGiftModal(
+  giftName,
+  suggestedValue,
+  description
+) {
+
+  selectedGift =
+    giftName;
+
+  selectedSuggestedValue =
+    Number(suggestedValue) || 50;
+
+  selectedValue =
+    selectedSuggestedValue;
+
+
+  giftModalTitle.textContent =
+    giftName;
+
+  giftModalDescription.textContent =
+    description || "";
+
+
+  giftSuggestedValue.textContent =
+    formatMoney(
+      selectedSuggestedValue
+    );
+
+
+  giftSuggestedButtonValue.textContent =
+    formatMoney(
+      selectedSuggestedValue
+    );
+
+
+  giftCustomInput.value =
     "";
 
-  let selectedSuggestedValue =
-    50;
+  giftCustomInput.min =
+    selectedSuggestedValue;
 
-  let selectedValue =
-    50;
+  giftCustomError.hidden =
+    true;
 
-
-  const PIX_KEY =
-    "05359541407";
-
-  const PIX_NAME =
-    "EDIVANIA TENORIO CAVALCANTE DA SILVA";
-
-  const PIX_CITY =
-    "ARAPIRACA";
+  giftCustomValue.hidden =
+    true;
 
 
-  function formatMoney(value) {
+  giftModalChoice.hidden =
+    false;
 
-    return Number(value).toLocaleString(
-      "pt-BR",
-      {
-        style: "currency",
-        currency: "BRL"
-      }
+  giftModalPix.hidden =
+    true;
+
+
+  giftQrContainer.hidden =
+    true;
+
+  giftQr.innerHTML =
+    "";
+
+
+  giftModal.hidden =
+    false;
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* =========================
+   FECHAR MODAL
+========================== */
+
+function closeGiftModal() {
+
+  giftModal.hidden =
+    true;
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+/* =========================
+   MOSTRAR ÁREA DE PAGAMENTO
+========================== */
+
+function showPix(value) {
+
+  selectedValue =
+    Number(value);
+
+
+  giftPixGift.textContent =
+    selectedGift;
+
+  giftPixValue.textContent =
+    formatMoney(
+      selectedValue
     );
 
-  }
+
+  giftModalChoice.hidden =
+    true;
+
+  giftModalPix.hidden =
+    false;
 
 
-  function openGiftModal(
-    giftName,
-    suggestedValue,
-    description
+  giftQrContainer.hidden =
+    true;
+
+  giftQr.innerHTML =
+    "";
+
+
+  updateCardOption();
+
+}
+
+
+/* =========================
+   ATUALIZAR OPÇÃO DO CARTÃO
+========================== */
+
+function updateCardOption() {
+
+  if (
+    !giftCardButton ||
+    !giftCardAlternatives ||
+    !giftCardValues
   ) {
 
-    selectedGift =
-      giftName;
-
-    selectedSuggestedValue =
-      Number(suggestedValue) || 50;
-
-    selectedValue =
-      selectedSuggestedValue;
-
-
-    giftModalTitle.textContent =
-      giftName;
-
-    giftModalDescription.textContent =
-      description || "";
-
-    giftSuggestedValue.textContent =
-      formatMoney(
-        selectedSuggestedValue
-      );
-
-    giftSuggestedButtonValue.textContent =
-      formatMoney(
-        selectedSuggestedValue
-      );
-
-
-    giftCustomInput.value =
-      "";
-
-    giftCustomInput.min =
-      selectedSuggestedValue;
-
-    giftCustomError.hidden =
-      true;
-
-    giftCustomValue.hidden =
-      true;
-
-    giftModalChoice.hidden =
-      false;
-
-    giftModalPix.hidden =
-      true;
-
-    giftQrContainer.hidden =
-      true;
-
-    giftQr.innerHTML =
-      "";
-
-
-    giftModal.hidden =
-      false;
-
-    document.body.style.overflow =
-      "hidden";
+    return;
 
   }
 
 
-  function closeGiftModal() {
+  giftCardValues.innerHTML =
+    "";
 
-    giftModal.hidden =
-      true;
-
-    document.body.style.overflow =
-      "";
-
-  }
+  giftCardAlternatives.hidden =
+    true;
 
 
-  function showPix(value) {
-
-    selectedValue =
-      Number(value);
-
-
-    giftPixGift.textContent =
-      selectedGift;
-
-    giftPixValue.textContent =
-      formatMoney(selectedValue);
+  const exactLink =
+    PAGBANK_LINKS[
+      selectedValue
+    ];
 
 
-    giftModalChoice.hidden =
-      true;
+  /* =========================
+     EXISTE LINK EXATO
+  ========================== */
 
-    giftModalPix.hidden =
+  if (
+    exactLink
+  ) {
+
+    giftCardButton.textContent =
+      "💳 PAGAR COM CARTÃO";
+
+    giftCardButton.disabled =
       false;
 
-    giftQrContainer.hidden =
-      true;
+    giftCardButton.onclick =
+      function () {
 
-    giftQr.innerHTML =
-      "";
+        window.open(
+          exactLink,
+          "_blank"
+        );
+
+      };
+
+    return;
 
   }
 
 
   /* =========================
-     BOTÕES PRESENTEAR
+     NÃO EXISTE LINK EXATO
   ========================== */
 
-  const giftButtons =
-    document.querySelectorAll(
-      ".gift-button[data-gift]"
+  giftCardButton.textContent =
+    "💳 VER VALORES DISPONÍVEIS";
+
+  giftCardButton.disabled =
+    false;
+
+
+  giftCardButton.onclick =
+    function () {
+
+      giftCardAlternatives.hidden =
+        false;
+
+      giftCardAlternatives.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
+    };
+
+
+  const closestValues =
+    getClosestPagBankValues(
+      selectedValue
     );
 
 
-  giftButtons.forEach(
-    (button) => {
+  closestValues.forEach(
+    function (value) {
 
-      const giftName =
-        button.dataset.gift;
+      const button =
+        document.createElement(
+          "button"
+        );
 
-      const value =
-        Number(button.dataset.value);
+
+      button.type =
+        "button";
+
+      button.className =
+        "gift-button gift-card-alternative-button";
 
 
-      /*
-       * Ignora os botões especiais
-       * que não pertencem aos presentes
-       */
-
-      if (
-        button.id === "giftCopyPix" ||
-        button.id === "giftShowQr" ||
-        button.id === "giftCustomContinue" ||
-        button.classList.contains(
-          "gift-other-button"
-        )
-      ) {
-
-        return;
-
-      }
+      button.textContent =
+        "PAGAR " +
+        formatMoney(value) +
+        " COM CARTÃO";
 
 
       button.addEventListener(
         "click",
         function () {
 
-          const giftItem =
-            button.closest(
-              ".gift-item"
-            );
-
-          const descriptionElement =
-            giftItem
-              ? giftItem.querySelector("p")
-              : null;
-
-          const description =
-            descriptionElement
-              ? descriptionElement.textContent.trim()
-              : "";
-
-
-          openGiftModal(
-            giftName,
-            value,
-            description
+          window.open(
+            PAGBANK_LINKS[value],
+            "_blank"
           );
 
         }
       );
 
-    }
-  );
 
-
-  /* =========================
-     USAR VALOR SUGERIDO
-  ========================== */
-
-  giftSuggestedButton.addEventListener(
-    "click",
-    function () {
-
-      showPix(
-        selectedSuggestedValue
+      giftCardValues.appendChild(
+        button
       );
 
     }
   );
 
+}
 
-  /* =========================
-     ESCOLHER VALOR MAIOR
-  ========================== */
 
-  giftOtherValueButton.addEventListener(
-    "click",
-    function () {
+/* =========================
+   BOTÕES PRESENTEAR
+========================== */
 
-      giftCustomValue.hidden =
+const giftButtons =
+  document.querySelectorAll(
+    ".gift-button[data-gift]"
+  );
+
+
+giftButtons.forEach(
+  (button) => {
+
+    const giftName =
+      button.dataset.gift;
+
+    const value =
+      Number(button.dataset.value);
+
+
+    /*
+     * Ignora botões especiais
+     */
+
+    if (
+      button.id ===
+      "giftCopyPix" ||
+
+      button.id ===
+      "giftShowQr" ||
+
+      button.id ===
+      "giftCustomContinue" ||
+
+      button.id ===
+      "giftCardButton" ||
+
+      button.classList.contains(
+        "gift-card-alternative-button"
+      ) ||
+
+      button.classList.contains(
+        "gift-other-button"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        const giftItem =
+          button.closest(
+            ".gift-item"
+          );
+
+
+        const descriptionElement =
+          giftItem
+            ? giftItem.querySelector("p")
+            : null;
+
+
+        const description =
+          descriptionElement
+            ? descriptionElement.textContent.trim()
+            : "";
+
+
+        openGiftModal(
+          giftName,
+          value,
+          description
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================
+   USAR VALOR SUGERIDO
+========================== */
+
+giftSuggestedButton.addEventListener(
+  "click",
+  function () {
+
+    showPix(
+      selectedSuggestedValue
+    );
+
+  }
+);
+
+
+/* =========================
+   ESCOLHER VALOR MAIOR
+========================== */
+
+giftOtherValueButton.addEventListener(
+  "click",
+  function () {
+
+    giftCustomValue.hidden =
+      false;
+
+    giftCustomInput.focus();
+
+  }
+);
+
+
+/* =========================
+   CONFIRMAR OUTRO VALOR
+========================== */
+
+giftCustomContinue.addEventListener(
+  "click",
+  function () {
+
+    const value =
+      Number(
+        giftCustomInput.value
+      );
+
+
+    if (
+      !value ||
+      value <
+      selectedSuggestedValue
+    ) {
+
+      giftCustomError.hidden =
         false;
 
       giftCustomInput.focus();
 
-    }
-  );
-
-
-  /* =========================
-     CONFIRMAR OUTRO VALOR
-  ========================== */
-
-  giftCustomContinue.addEventListener(
-    "click",
-    function () {
-
-      const value =
-        Number(
-          giftCustomInput.value
-        );
-
-
-      if (
-        !value ||
-        value <
-        selectedSuggestedValue
-      ) {
-
-        giftCustomError.hidden =
-          false;
-
-        giftCustomInput.focus();
-
-        return;
-
-      }
-
-
-      giftCustomError.hidden =
-        true;
-
-
-      showPix(value);
+      return;
 
     }
-  );
 
 
-  /* =========================
-     FECHAR MODAL
-  ========================== */
-
-  giftModalClose.addEventListener(
-    "click",
-    closeGiftModal
-  );
+    giftCustomError.hidden =
+      true;
 
 
-  giftModalOverlay.addEventListener(
-    "click",
-    closeGiftModal
-  );
+    showPix(value);
+
+  }
+);
 
 
-  /* =========================
-     VOLTAR
-  ========================== */
+/* =========================
+   FECHAR MODAL
+========================== */
 
-  giftModalBack.addEventListener(
-    "click",
-    function () {
-
-      giftModalPix.hidden =
-        true;
-
-      giftModalChoice.hidden =
-        false;
-
-      giftQrContainer.hidden =
-        true;
-
-      giftQr.innerHTML =
-        "";
-
-    }
-  );
+giftModalClose.addEventListener(
+  "click",
+  closeGiftModal
+);
 
 
-  /* =========================
-     ESC PARA FECHAR
-  ========================== */
-
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (
-        event.key === "Escape" &&
-        !giftModal.hidden
-      ) {
-
-        closeGiftModal();
-
-      }
-
-    }
-  );
+giftModalOverlay.addEventListener(
+  "click",
+  closeGiftModal
+);
 
 
-  /* =========================
-     COPIAR CHAVE PIX
-  ========================== */
+/* =========================
+   VOLTAR
+========================== */
 
-  giftCopyPix.addEventListener(
-    "click",
-    async function () {
+giftModalBack.addEventListener(
+  "click",
+  function () {
 
-      try {
+    giftModalPix.hidden =
+      true;
 
-        await navigator.clipboard.writeText(
-          PIX_KEY
-        );
+    giftModalChoice.hidden =
+      false;
 
+    giftQrContainer.hidden =
+      true;
 
-        const originalText =
-          giftCopyPix.textContent;
+    giftQr.innerHTML =
+      "";
 
-
-        giftCopyPix.textContent =
-          "✓ CHAVE PIX COPIADA";
-
-
-        setTimeout(
-          function () {
-
-            giftCopyPix.textContent =
-              originalText;
-
-          },
-          2500
-        );
+  }
+);
 
 
-      } catch (error) {
+/* =========================
+   ESC PARA FECHAR
+========================== */
 
-        alert(
-          "Não foi possível copiar automaticamente. Chave PIX: " +
-          PIX_KEY
-        );
+document.addEventListener(
+  "keydown",
+  function (event) {
 
-      }
-
-    }
-  );
-
-
-  /* =========================
-     GERADOR DE PAYLOAD PIX
-  ========================== */
-
-  function crc16(payload) {
-
-    let crc =
-      0xFFFF;
-
-
-    for (
-      let i = 0;
-      i < payload.length;
-      i++
+    if (
+      event.key === "Escape" &&
+      !giftModal.hidden
     ) {
 
-      crc ^=
-        payload.charCodeAt(i) << 8;
-
-
-      for (
-        let bit = 0;
-        bit < 8;
-        bit++
-      ) {
-
-        if (
-          crc & 0x8000
-        ) {
-
-          crc =
-            (crc << 1) ^
-            0x1021;
-
-        } else {
-
-          crc <<=
-            1;
-
-        }
-
-
-        crc &=
-          0xFFFF;
-
-      }
+      closeGiftModal();
 
     }
 
-
-    return crc
-      .toString(16)
-      .toUpperCase()
-      .padStart(4, "0");
-
   }
+);
 
 
-  function pixField(
-    id,
-    value
-  ) {
+/* =========================
+   COPIAR CHAVE PIX
+========================== */
 
-    return (
-      id +
-      String(value.length)
-        .padStart(2, "0") +
-      value
-    );
+giftCopyPix.addEventListener(
+  "click",
+  async function () {
 
-  }
+    try {
 
-
-  function createPixPayload(
-    amount
-  ) {
-
-    const merchantAccountInformation =
-      pixField(
-        "00",
-        "BR.GOV.BCB.PIX"
-      ) +
-      pixField(
-        "01",
+      await navigator.clipboard.writeText(
         PIX_KEY
       );
 
 
-    let payload =
-      pixField(
-        "00",
-        "01"
+      const originalText =
+        giftCopyPix.textContent;
+
+
+      giftCopyPix.textContent =
+        "✓ CHAVE PIX COPIADA";
+
+
+      setTimeout(
+        function () {
+
+          giftCopyPix.textContent =
+            originalText;
+
+        },
+        2500
       );
 
 
-    payload +=
-      pixField(
-        "26",
-        merchantAccountInformation
+    } catch (error) {
+
+      alert(
+        "Não foi possível copiar automaticamente. Chave PIX: " +
+        PIX_KEY
       );
 
+    }
 
-    payload +=
-      pixField(
-        "52",
-        "0000"
-      );
+  }
+);
 
 
-    payload +=
-      pixField(
-        "53",
-        "986"
-      );
+/* =========================
+   GERADOR DE PAYLOAD PIX
+========================== */
+
+function crc16(payload) {
+
+  let crc =
+    0xFFFF;
 
 
-    payload +=
-      pixField(
-        "54",
-        Number(amount)
-          .toFixed(2)
-      );
+  for (
+    let i = 0;
+    i < payload.length;
+    i++
+  ) {
+
+    crc ^=
+      payload.charCodeAt(i) << 8;
 
 
-    payload +=
-      pixField(
-        "58",
-        "BR"
-      );
+    for (
+      let bit = 0;
+      bit < 8;
+      bit++
+    ) {
+
+      if (
+        crc & 0x8000
+      ) {
+
+        crc =
+          (crc << 1) ^
+          0x1021;
+
+      } else {
+
+        crc <<=
+          1;
+
+      }
 
 
-    payload +=
-      pixField(
-        "59",
-        PIX_NAME
-          .substring(0, 25)
-      );
+      crc &=
+        0xFFFF;
 
-
-    payload +=
-      pixField(
-        "60",
-        PIX_CITY
-          .substring(0, 15)
-      );
-
-
-    payload +=
-      pixField(
-        "62",
-        pixField(
-          "05",
-          "***"
-        )
-      );
-
-
-    payload +=
-      "6304";
-
-
-    payload +=
-      crc16(payload);
-
-
-    return payload;
+    }
 
   }
 
 
-  /* =========================
-     MOSTRAR QR CODE
-  ========================== */
+  return crc
+    .toString(16)
+    .toUpperCase()
+    .padStart(4, "0");
 
-  giftShowQr.addEventListener(
+}
+
+
+function pixField(
+  id,
+  value
+) {
+
+  return (
+    id +
+    String(value.length)
+      .padStart(2, "0") +
+    value
+  );
+
+}
+
+
+function createPixPayload(
+  amount
+) {
+
+  const merchantAccountInformation =
+    pixField(
+      "00",
+      "BR.GOV.BCB.PIX"
+    ) +
+    pixField(
+      "01",
+      PIX_KEY
+    );
+
+
+  let payload =
+    pixField(
+      "00",
+      "01"
+    );
+
+
+  payload +=
+    pixField(
+      "26",
+      merchantAccountInformation
+    );
+
+
+  payload +=
+    pixField(
+      "52",
+      "0000"
+    );
+
+
+  payload +=
+    pixField(
+      "53",
+      "986"
+    );
+
+
+  payload +=
+    pixField(
+      "54",
+      Number(amount)
+        .toFixed(2)
+    );
+
+
+  payload +=
+    pixField(
+      "58",
+      "BR"
+    );
+
+
+  payload +=
+    pixField(
+      "59",
+      PIX_NAME
+        .substring(0, 25)
+    );
+
+
+  payload +=
+    pixField(
+      "60",
+      PIX_CITY
+        .substring(0, 15)
+    );
+
+
+  payload +=
+    pixField(
+      "62",
+      pixField(
+        "05",
+        "***"
+      )
+    );
+
+
+  payload +=
+    "6304";
+
+
+  payload +=
+    crc16(payload);
+
+
+  return payload;
+
+}
+
+
+/* =========================
+   MOSTRAR QR CODE
+========================== */
+
+giftShowQr.addEventListener(
+  "click",
+  function () {
+
+    const pixPayload =
+      createPixPayload(
+        selectedValue
+      );
+
+
+    giftQrContainer.hidden =
+      false;
+
+
+    giftQr.innerHTML =
+      "";
+
+
+    const qrImage =
+      document.createElement(
+        "img"
+      );
+
+
+    qrImage.alt =
+      "QR Code para pagamento via PIX";
+
+
+    qrImage.style.width =
+      "220px";
+
+    qrImage.style.height =
+      "220px";
+
+
+    qrImage.src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
+      encodeURIComponent(
+        pixPayload
+      );
+
+
+    giftQr.appendChild(
+      qrImage
+    );
+
+  }
+);
+
+
+/* =========================
+   OUTRO VALOR
+========================== */
+
+const giftOtherButton =
+  document.querySelector(
+    ".gift-other-button"
+  );
+
+
+if (
+  giftOtherButton
+) {
+
+  giftOtherButton.addEventListener(
     "click",
     function () {
 
-      const pixPayload =
-        createPixPayload(
-          selectedValue
-        );
-
-
-      giftQrContainer.hidden =
-        false;
-
-
-      giftQr.innerHTML =
-        "";
-
-
-      const qrImage =
-        document.createElement(
-          "img"
-        );
-
-
-      qrImage.alt =
-        "QR Code para pagamento via PIX";
-
-
-      qrImage.style.width =
-        "220px";
-
-      qrImage.style.height =
-        "220px";
-
-
-      qrImage.src =
-        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
-        encodeURIComponent(
-          pixPayload
-        );
-
-
-      giftQr.appendChild(
-        qrImage
+      openGiftModal(
+        "Outro valor",
+        50,
+        "Escolha o valor que deseja nos presentear."
       );
 
     }
   );
 
-
-  /* =========================
-     OUTRO VALOR
-  ========================== */
-
-  const giftOtherButton =
-    document.querySelector(
-      ".gift-other-button"
-    );
-
-
-  if (
-    giftOtherButton
-  ) {
-
-    giftOtherButton.addEventListener(
-      "click",
-      function () {
-
-        openGiftModal(
-          "Outro valor",
-          50,
-          "Escolha o valor que deseja nos presentear."
-        );
-
-      }
-    );
-
-  }
+}
 
 
 });
