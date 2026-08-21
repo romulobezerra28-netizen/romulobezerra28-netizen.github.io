@@ -141,28 +141,70 @@ backgroundMusic.addEventListener(
 // TENTA INICIAR AUTOMATICAMENTE
 // =========================
 
+// =========================
+// TENTA INICIAR AUTOMATICAMENTE
+// =========================
+
+let musicInteractionAttempted = false;
+
+async function tryStartMusic() {
+
+  if (
+    musicInteractionAttempted ||
+    !backgroundMusic.paused
+  ) {
+    return;
+  }
+
+  musicInteractionAttempted = true;
+
+  try {
+
+    await backgroundMusic.play();
+
+  } catch (error) {
+
+    console.log(
+      "Autoplay bloqueado pelo navegador."
+    );
+
+  }
+
+}
+
+
+// Primeira tentativa ao abrir
 window.addEventListener(
   "load",
-  async function () {
+  function () {
 
-    try {
-
-      await backgroundMusic.play();
-
-    } catch (error) {
-
-      // O navegador bloqueou o autoplay.
-      // O botão manual continuará funcionando normalmente.
-
-      console.log(
-        "Autoplay bloqueado pelo navegador."
-      );
-
-    }
+    tryStartMusic();
 
   }
 );
 
+
+// Segunda tentativa na primeira interação
+document.addEventListener(
+  "click",
+  function () {
+
+    tryStartMusic();
+
+  },
+  { once: true }
+);
+
+
+document.addEventListener(
+  "touchstart",
+  function () {
+
+    tryStartMusic();
+
+  },
+  { once: true }
+);
 
 // =========================
 // CONTROLE MANUAL
