@@ -95,55 +95,106 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown,
     1000
   );
-  // =========================
-  // MÚSICA
-  // =========================
-
+  
     // =========================
   // MÚSICA
   // =========================
 
   const musicButton =
-    document.getElementById("musicButton");
+  document.getElementById("musicButton");
 
-  const backgroundMusic =
-    document.getElementById("backgroundMusic");
+const backgroundMusic =
+  document.getElementById("backgroundMusic");
 
 
-  musicButton.addEventListener(
-    "click",
-    async function () {
+// =========================
+// SINCRONIZA O BOTÃO
+// =========================
 
-      try {
+backgroundMusic.addEventListener(
+  "play",
+  function () {
 
-        if (backgroundMusic.paused) {
+    musicButton.textContent =
+      "❚❚ Pausar música";
 
-          await backgroundMusic.play();
+    musicButton.classList.add("playing");
 
-          musicButton.textContent =
-            "❚❚ Pausar música";
-musicButton.classList.add("playing");
-        } else {
+  }
+);
 
-          backgroundMusic.pause();
 
-          musicButton.textContent =
-            "♫ Ouvir nossa música";
-musicButton.classList.remove("playing");
-        }
+backgroundMusic.addEventListener(
+  "pause",
+  function () {
 
-      } catch (error) {
+    musicButton.textContent =
+      "♫ Ouvir nossa música";
 
-        console.error(
-          "Não foi possível reproduzir a música:",
-          error
-        );
+    musicButton.classList.remove("playing");
+
+  }
+);
+
+
+// =========================
+// TENTA INICIAR AUTOMATICAMENTE
+// =========================
+
+window.addEventListener(
+  "load",
+  async function () {
+
+    try {
+
+      await backgroundMusic.play();
+
+    } catch (error) {
+
+      // O navegador bloqueou o autoplay.
+      // O botão manual continuará funcionando normalmente.
+
+      console.log(
+        "Autoplay bloqueado pelo navegador."
+      );
+
+    }
+
+  }
+);
+
+
+// =========================
+// CONTROLE MANUAL
+// =========================
+
+musicButton.addEventListener(
+  "click",
+  async function () {
+
+    try {
+
+      if (backgroundMusic.paused) {
+
+        await backgroundMusic.play();
+
+      } else {
+
+        backgroundMusic.pause();
 
       }
 
-    }
-  );
+    } catch (error) {
 
+      console.error(
+        "Não foi possível reproduzir a música:",
+        error
+      );
+
+    }
+
+  }
+);
 
   /* =========================
      ANIMAÇÕES AO ROLAR
