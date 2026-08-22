@@ -2870,6 +2870,15 @@ opacity: .7;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+
   width: 100%;
+
   margin-top: 24px;
+
+  background-color: var(--rose-deep) !important;
+  color: var(--white) !important;
+
+  border: 1px solid var(--rose-deep) !important;
+
+  cursor: pointer;
 }
