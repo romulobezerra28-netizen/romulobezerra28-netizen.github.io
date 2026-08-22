@@ -288,7 +288,7 @@ musicButton.addEventListener(
   );
 
 
- /* =========================
+/* =========================
    FORMULÁRIO DE CONFIRMAÇÃO
 ========================== */
 
@@ -308,9 +308,14 @@ const companionInputs =
     'input[name="companion"]'
   );
 
-const companionNameGroup =
+const companionDetailsGroup =
   document.getElementById(
-    "companionNameGroup"
+    "companionDetailsGroup"
+  );
+
+const companionCount =
+  document.getElementById(
+    "companionCount"
   );
 
 const companionName =
@@ -323,6 +328,10 @@ const rsvpSuccess =
     "rsvpSuccess"
   );
 
+
+/* =========================
+   PRESENÇA
+========================== */
 
 attendanceInputs.forEach(
   (input) => {
@@ -343,17 +352,29 @@ attendanceInputs.forEach(
           companionGroup.hidden =
             true;
 
-          companionNameGroup.hidden =
+          companionDetailsGroup.hidden =
             true;
 
           companionInputs.forEach(
             (radio) => {
-              radio.checked = false;
+
+              radio.checked =
+                false;
+
             }
           );
 
+          companionCount.value =
+            "";
+
           companionName.value =
             "";
+
+          companionCount.required =
+            false;
+
+          companionName.required =
+            false;
 
         }
 
@@ -363,6 +384,10 @@ attendanceInputs.forEach(
   }
 );
 
+
+/* =========================
+   ACOMPANHANTES
+========================== */
 
 companionInputs.forEach(
   (input) => {
@@ -376,19 +401,28 @@ companionInputs.forEach(
           "acompanhante"
         ) {
 
-          companionNameGroup.hidden =
+          companionDetailsGroup.hidden =
             false;
+
+          companionCount.required =
+            true;
 
           companionName.required =
             true;
 
         } else {
 
-          companionNameGroup.hidden =
+          companionDetailsGroup.hidden =
             true;
+
+          companionCount.required =
+            false;
 
           companionName.required =
             false;
+
+          companionCount.value =
+            "";
 
           companionName.value =
             "";
@@ -401,6 +435,10 @@ companionInputs.forEach(
   }
 );
 
+
+/* =========================
+   ENVIO DO FORMULÁRIO
+========================== */
 
 rsvpForm.addEventListener(
   "submit",
@@ -421,11 +459,15 @@ rsvpForm.addEventListener(
       presenca:
         formData.get("attendance") || "",
 
-      acompanhante:
+      acompanhantes:
+        formData.get("companionCount") || "0",
+
+      nomesAcompanhantes:
         formData.get("companionName") || "",
 
       mensagem:
         formData.get("guestMessage") || ""
+
     };
 
 
