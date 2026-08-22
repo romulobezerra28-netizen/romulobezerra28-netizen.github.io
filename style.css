@@ -64,7 +64,8 @@ a {
   display: grid;
   place-items: center;
 
-  overflow: visible;
+  overflow-x: clip;
+overflow-y: visible;
 
   background:
     radial-gradient(
