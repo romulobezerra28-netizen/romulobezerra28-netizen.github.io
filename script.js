@@ -459,10 +459,13 @@ rsvpForm.addEventListener(
       presenca:
         formData.get("attendance") || "",
 
-      acompanhantes:
+      acompanhante:
+        formData.get("companion") || "",
+
+      companionCount:
         formData.get("companionCount") || "0",
 
-      nomesAcompanhantes:
+      companionName:
         formData.get("companionName") || "",
 
       mensagem:
