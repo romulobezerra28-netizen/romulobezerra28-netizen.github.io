@@ -492,11 +492,11 @@
     </section>
 
 
-    <!-- =========================
-         CONFIRMAÇÃO
-    ========================== -->
+   <!-- =========================
+     CONFIRMAÇÃO
+========================== -->
 
-   <section class="section confirmation">
+<section class="section confirmation">
 
   <div class="section-title reveal">
 
@@ -581,6 +581,8 @@
       </div>
 
 
+      <!-- ACOMPANHANTES -->
+
       <div
         class="form-group"
         id="companionGroup"
@@ -613,86 +615,52 @@
             value="acompanhante">
 
           <span>
-            Eu + 1 acompanhante
+            Eu + acompanhante(s)
           </span>
 
-      <!-- ACOMPANHANTES -->
+        </label>
 
-<div
-  class="form-group"
-  id="companionGroup"
-  hidden>
-
-  <p class="form-label">
-    Como será sua presença?
-  </p>
+      </div>
 
 
-  <label class="choice">
+      <div
+        class="form-group"
+        id="companionDetailsGroup"
+        hidden>
 
-    <input
-      type="radio"
-      name="companion"
-      value="somente-eu">
+        <label for="companionCount">
+          Quantas pessoas virão com você?
+        </label>
 
-    <span>
-      Somente eu
-    </span>
-
-  </label>
-
-
-  <label class="choice">
-
-    <input
-      type="radio"
-      name="companion"
-      value="acompanhante">
-
-    <span>
-      Eu + acompanhante(s)
-    </span>
-
-  </label>
-
-</div>
+        <input
+          type="number"
+          id="companionCount"
+          name="companionCount"
+          min="1"
+          max="20"
+          step="1"
+          inputmode="numeric"
+          placeholder="Ex.: 2">
 
 
-<div
-  class="form-group"
-  id="companionDetailsGroup"
-  hidden>
+        <label
+          for="companionName"
+          style="margin-top: 18px; display: block;">
 
-  <label for="companionCount">
-    Quantas pessoas virão com você?
-  </label>
+          Nome dos acompanhantes
 
-  <input
-    type="number"
-    id="companionCount"
-    name="companionCount"
-    min="1"
-    max="20"
-    step="1"
-    inputmode="numeric"
-    placeholder="Ex.: 2">
+        </label>
+
+        <input
+          type="text"
+          id="companionName"
+          name="companionName"
+          placeholder="Ex.: Maria, João e Pedro">
+
+      </div>
 
 
-  <label
-    for="companionName"
-    style="margin-top: 18px; display: block;">
-
-    Nome dos acompanhantes
-
-  </label>
-
-  <input
-    type="text"
-    id="companionName"
-    name="companionName"
-    placeholder="Ex.: Maria, João e Pedro">
-
-</div>
+      <!-- MENSAGEM -->
 
       <div
         class="form-group"
@@ -753,7 +721,6 @@
   </div>
 
 </section>
-
     <!-- =========================
          PRESENTES
     ========================== -->
