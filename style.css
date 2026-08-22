@@ -2914,3 +2914,40 @@ opacity: .7;
   }
 
 }
+
+/* =========================
+   AJUSTE DO FORMULÁRIO RSVP
+   CAMPOS DE ACOMPANHANTES
+========================== */
+
+#companionDetailsGroup {
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+#companionDetailsGroup label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#companionDetailsGroup input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#companionDetailsGroup input + label {
+  margin-top: 18px;
+}
+
+#messageGroup {
+  clear: both;
+  position: relative;
+  margin-top: 24px;
+}
+
+#messageGroup textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
