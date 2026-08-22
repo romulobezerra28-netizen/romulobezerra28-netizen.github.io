@@ -616,28 +616,83 @@
             Eu + 1 acompanhante
           </span>
 
-        </label>
+      <!-- ACOMPANHANTES -->
 
-      </div>
+<div
+  class="form-group"
+  id="companionGroup"
+  hidden>
+
+  <p class="form-label">
+    Como será sua presença?
+  </p>
 
 
-      <div
-        class="form-group"
-        id="companionNameGroup"
-        hidden>
+  <label class="choice">
 
-        <label for="companionName">
-          Nome do seu acompanhante
-        </label>
+    <input
+      type="radio"
+      name="companion"
+      value="somente-eu">
 
-        <input
-          type="text"
-          id="companionName"
-          name="companionName"
-          placeholder="Digite o nome">
+    <span>
+      Somente eu
+    </span>
 
-      </div>
+  </label>
 
+
+  <label class="choice">
+
+    <input
+      type="radio"
+      name="companion"
+      value="acompanhante">
+
+    <span>
+      Eu + acompanhante(s)
+    </span>
+
+  </label>
+
+</div>
+
+
+<div
+  class="form-group"
+  id="companionDetailsGroup"
+  hidden>
+
+  <label for="companionCount">
+    Quantas pessoas virão com você?
+  </label>
+
+  <input
+    type="number"
+    id="companionCount"
+    name="companionCount"
+    min="1"
+    max="20"
+    step="1"
+    inputmode="numeric"
+    placeholder="Ex.: 2">
+
+
+  <label
+    for="companionName"
+    style="margin-top: 18px; display: block;">
+
+    Nome dos acompanhantes
+
+  </label>
+
+  <input
+    type="text"
+    id="companionName"
+    name="companionName"
+    placeholder="Ex.: Maria, João e Pedro">
+
+</div>
 
       <div
         class="form-group"
